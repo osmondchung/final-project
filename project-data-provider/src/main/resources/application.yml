@@ -1,0 +1,15 @@
+finnhub:
+  token: d3rrr6hr01qldtran5egd3rrr6hr01qldtran5f0
+
+StockQuote:
+  url: "https://finnhub.io/api/v1/quote?symbol="
+
+ComProfile:
+  url: "https://finnhub.io/api/v1/stock/profile2?symbol="
+
+sp500:
+  symbols:
+    url: "https://raw.githubusercontent.com/datasets/sp500/master/data/sp500_symbols.json"
+
+server:
+  port: 8081
