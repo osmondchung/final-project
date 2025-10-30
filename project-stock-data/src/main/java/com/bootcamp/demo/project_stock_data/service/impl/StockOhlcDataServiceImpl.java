@@ -23,10 +23,10 @@ public class StockOhlcDataServiceImpl implements StockOhlcDataService{
   @Autowired
   private RestTemplate restTemplate;
   
-  @Override
+  /*@Override
   public List<StockOhlcData> getOhlc(String symbol){
     return this.stockOhlcDataRepository.findBySymbol(symbol);
-  }
+  }*/
 
   @Override
   public StockOhlcvDto getOhlcPerStock(String symbol){

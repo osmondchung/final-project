@@ -9,6 +9,10 @@ import com.bootcamp.demo.project_stock_data.entity.StockSymbol;
 @Repository
 public interface StockRepository extends JpaRepository<StockSymbol, String>{
   @Query(value = "select * from stock_symbol_list", nativeQuery = true)
-  List<StockSymbol> getStockSymbol();
+  List<String> getStockSymbol();
   
+  @Query(value = "select ss.symbol from stock_symbol_list ss limit 30", nativeQuery = true)
+  List<String> getTop30MarketcapStockSymbol();
 }
+
+//join stock_profile sp on ss.symbol = sp.symbol order by sp.market_cap

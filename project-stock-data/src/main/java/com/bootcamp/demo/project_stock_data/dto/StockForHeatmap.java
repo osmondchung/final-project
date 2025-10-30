@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 @Builder
 public class StockForHeatmap {
-  private Long stockId;
+  //private Long stockId;
   private String symbol;
   private String name;
   private Double price;

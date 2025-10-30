@@ -9,13 +9,19 @@ spring:
     hibernate.ddl-auto: update
     properties:
       dialect: org.hibernate.dialect.PostgreSQLDialect
+  devtools:
+    restart:
+      enabled: false
 
 # Base URL of data-provider app
 data:
   provider:
     base-url: http://localhost:8081
 
-# Polling rate (ms) for scheduled collector (optional)
-stock:
-  collector:
-    rate-ms: 60000
+server:
+  port: 8080
+
+#stock:
+ # collector:
+  #  cron: "0 */5 * * * *"   # every 5 minutes
+    # or use fixedDelayString: 300000 for 5 min

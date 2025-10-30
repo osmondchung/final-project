@@ -9,8 +9,8 @@ import com.bootcamp.demo.project_stock_data.dto.CompanyData;
 import com.bootcamp.demo.project_stock_data.dto.RealTimeData;
 import com.bootcamp.demo.project_stock_data.dto.StockForHeatmap;
 import com.bootcamp.demo.project_stock_data.dto.StockOhlcvDto;
+import com.bootcamp.demo.project_stock_data.entity.StockProfile;
 import com.bootcamp.demo.project_stock_data.entity.StockSymbol;
-import com.bootcamp.demo.project_stock_data.entity.StockOhlcData;
 import com.bootcamp.demo.project_stock_data.service.StockCompanyDataService;
 import com.bootcamp.demo.project_stock_data.service.StockForHeatmapService;
 import com.bootcamp.demo.project_stock_data.service.StockOhlcDataService;
@@ -31,14 +31,14 @@ public class StockDataAppController implements StockDataAppOperation{
   private StockForHeatmapService stockForHeatmapService;
 
   @Override
-  public List<StockSymbol> getSymbols(){
+  public List<String> getSymbols(){
     return this.stockSymbolService.getStocks();
   }
 
-  @Override
+  /*@Override
   public List<StockOhlcData> getOhlc(String symbol){
     return this.stockOhlcDataService.getOhlc(symbol);
-  }
+  }*/
 
   @Override
   public  StockOhlcvDto getOhlcPerStock(String symbol){
@@ -52,7 +52,7 @@ public class StockDataAppController implements StockDataAppOperation{
   }
 
   @Override
-  public List<CompanyData> getAllProfiles(){
+  public List<StockProfile> getAllProfiles(){
     return this.stockCompanyDataService.callAnotherService();
   }
 

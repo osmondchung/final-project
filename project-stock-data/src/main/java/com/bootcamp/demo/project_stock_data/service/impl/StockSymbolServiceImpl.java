@@ -13,7 +13,7 @@ public class StockSymbolServiceImpl implements StockSymbolService{
   private StockRepository stockRepository;
 
   @Override
-  public List<StockSymbol> getStocks(){
+  public List<String> getStocks(){
     return this.stockRepository.getStockSymbol();
   }
 

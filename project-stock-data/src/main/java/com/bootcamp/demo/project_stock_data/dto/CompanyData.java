@@ -22,5 +22,14 @@ public class CompanyData {
 }
 
 // stockId
-// ipoDtae
-// webUrl
+/*             {
+        "symbol": "StockSymbol(symbol%3DMMM)",
+        "industry": null,
+        "marketCap": null,
+        "logo": null,
+        "companyName": null,
+        "shares": null,
+        "ipo": null,
+        "weburl": null,
+        "stock": null
+    },*/

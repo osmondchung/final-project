@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import com.bootcamp.demo.project_stock_data.dto.CompanyData;
 import com.bootcamp.demo.project_stock_data.dto.RealTimeData;
 import com.bootcamp.demo.project_stock_data.dto.StockForHeatmap;
+import com.bootcamp.demo.project_stock_data.entity.StockProfile;
 import com.bootcamp.demo.project_stock_data.entity.StockSymbol;
 import com.bootcamp.demo.project_stock_data.repository.StockRepository;
 import com.bootcamp.demo.project_stock_data.service.StockCompanyDataService;
@@ -28,12 +29,11 @@ public class StockForHeatmapServiceImpl implements StockForHeatmapService{
   @Override
   public List<StockForHeatmap> getAllForHeatmap(){
     List<RealTimeData> realTimeDatas = this.stockRealTimeDataService.callAnotherService();
-    List<CompanyData> companyDatas = this.stockCompanyDataService.callAnotherService();
+    List<StockProfile> companyDatas = this.stockCompanyDataService.callAnotherService();
     List<StockForHeatmap> output = new ArrayList<>();
 
     for (int i = 0; i < realTimeDatas.size(); i++){
       StockForHeatmap stockForHeatmap = StockForHeatmap.builder()
-        .stockId(null)
         .symbol(realTimeDatas.get(i).getSymbol())
         .price(realTimeDatas.get(i).getPrice())
         .marketPriceChg(realTimeDatas.get(i).getChange())

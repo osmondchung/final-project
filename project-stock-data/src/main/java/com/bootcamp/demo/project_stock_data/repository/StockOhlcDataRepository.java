@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.bootcamp.demo.project_stock_data.entity.StockOhlcData;
+import com.bootcamp.demo.project_stock_data.entity.StockSymbol;
 
 @Repository
 public interface StockOhlcDataRepository extends JpaRepository<StockOhlcData, String>{

@@ -8,6 +8,7 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "stock_profile")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString @EqualsAndHashCode
+@Builder
 public class StockProfile {
   @Id
   private String symbol;
@@ -27,6 +29,8 @@ public class StockProfile {
   @Column(length = 1000)
   private String companyName;
   private Double shares;
+  private String ipo;
+  private String weburl;
 
   @OneToOne
   @MapsId
