@@ -5,13 +5,13 @@ spring:
     username: "postgres"
     password: "admin1234"
   jpa:
-    show-sql: false
+    show-sql: true
     hibernate.ddl-auto: update
     properties:
       dialect: org.hibernate.dialect.PostgreSQLDialect
   devtools:
     restart:
-      enabled: false
+      enabled: true
 
 # Base URL of data-provider app
 data:

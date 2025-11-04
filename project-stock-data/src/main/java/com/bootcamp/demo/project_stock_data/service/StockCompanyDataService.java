@@ -7,4 +7,5 @@ import com.bootcamp.demo.project_stock_data.entity.StockProfile;
 public interface StockCompanyDataService {
   List<StockProfile> callAnotherService();
   CompanyData callAnotherService2(String symbol);
+  void saveToRepository(List<StockProfile> stockProfiles);
 }

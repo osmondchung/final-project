@@ -41,10 +41,9 @@ public class StockDataAppController implements StockDataAppOperation{
   }*/
 
   @Override
-  public  StockOhlcvDto getOhlcPerStock(String symbol){
+  public StockOhlcvDto getOhlcPerStock(String symbol){
     return this.stockOhlcDataService.getOhlcPerStock(symbol);
   }
-
 
   @Override
   public List<RealTimeData> getAllQuotes(){

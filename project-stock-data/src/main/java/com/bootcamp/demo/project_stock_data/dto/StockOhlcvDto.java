@@ -2,6 +2,7 @@ package com.bootcamp.demo.project_stock_data.dto;
 
 import java.util.List;
 import com.bootcamp.demo.project_stock_data.entity.StockOhlcData;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -23,6 +24,7 @@ public class StockOhlcvDto {
   private String logo;
   @Setter
   @Getter
+  @JsonProperty("ohlcs")
   private List<StockOhlcData> Ohlcs;
 
   

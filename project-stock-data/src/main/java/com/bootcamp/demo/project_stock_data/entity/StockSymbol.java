@@ -15,11 +15,11 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "stock_symbol_list")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString @EqualsAndHashCode
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class StockSymbol {
+
   @Id
-  //@GeneratedValue(strategy = GenerationType.IDENTITY)
-  //private Long id;
-  @Column(name = "symbol", nullable = false, unique = true)
+  @Column(name = "symbol")
   private String symbol;
 }
+

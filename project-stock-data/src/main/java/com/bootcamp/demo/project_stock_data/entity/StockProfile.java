@@ -2,6 +2,8 @@ package com.bootcamp.demo.project_stock_data.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
@@ -17,7 +19,7 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "stock_profile")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString @EqualsAndHashCode
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class StockProfile {
   @Id
@@ -33,7 +35,6 @@ public class StockProfile {
   private String weburl;
 
   @OneToOne
-  @MapsId
-  @JoinColumn(name = "symbol", referencedColumnName = "symbol")
+  @JoinColumn(name = "symbol", insertable=false, updatable=false)
   private StockSymbol stock;
 }

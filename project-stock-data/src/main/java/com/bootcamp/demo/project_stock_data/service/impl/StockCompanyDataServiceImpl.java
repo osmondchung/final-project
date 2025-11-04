@@ -17,6 +17,7 @@ import com.bootcamp.demo.project_stock_data.entity.StockSymbol;
 import com.bootcamp.demo.project_stock_data.repository.StockProfilesRepository;
 import com.bootcamp.demo.project_stock_data.repository.StockRepository;
 import com.bootcamp.demo.project_stock_data.service.StockCompanyDataService;
+import jakarta.transaction.Transactional;
 
 @Service
 public class StockCompanyDataServiceImpl implements StockCompanyDataService{
@@ -55,6 +56,7 @@ public class StockCompanyDataServiceImpl implements StockCompanyDataService{
 
     // get all real time quotes
   @Override
+  @Transactional
   public List<StockProfile> callAnotherService() {
     //this.stockProfilesRepository.deleteAll();
     List<String> stockSymbols = this.stockRepository.getTop30MarketcapStockSymbol();
@@ -73,7 +75,21 @@ public class StockCompanyDataServiceImpl implements StockCompanyDataService{
             );
 
             StockProfile body = response.getBody();
+            // CRITICAL: Set ID
+            body.setSymbol(stockSymbol);
+
+            // Link StockSymbol
+            /*StockSymbol stock = stockRepository.findById(stockSymbol)
+                .orElseGet(() -> {
+                    StockSymbol s = new StockSymbol();
+                    s.setSymbol(stockSymbol);
+                    return stockRepository.save(s);
+                });
+            body.setStock(stock);*/
+
             stockProfiles.add(body);
+            //StockProfile body = response.getBody();
+            //stockProfiles.add(body);
             //return body;
 
         } catch (HttpClientErrorException | HttpServerErrorException e) {
@@ -81,7 +97,14 @@ public class StockCompanyDataServiceImpl implements StockCompanyDataService{
         }
     }
     //this.stockProfilesRepository.saveAll(stockProfiles);
+    saveToRepository(stockProfiles);
     return stockProfiles;
+  }
+
+  @Override
+  public void saveToRepository(List<StockProfile> stockProfiles){
+    this.stockProfilesRepository.deleteAll();
+    this.stockProfilesRepository.saveAll(stockProfiles);
   }
 
   @Override

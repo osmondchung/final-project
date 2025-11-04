@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
@@ -18,14 +20,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@IdClass(StockOhlcDataId.class)
 @Entity
 @Table(name = "stock_ohlc_data")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString @EqualsAndHashCode
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @JsonIgnoreProperties({"change", "changesPercentage", "price", "stock", "symbol"})
 public class StockOhlcData {
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   private String symbol;
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private LocalDateTime date;
+
   private Double price;
   private Double change;
   private Double changesPercentage;
@@ -34,13 +40,9 @@ public class StockOhlcData {
   private Double openPrice;
   private Double closePrice;
   private Long volume;
-  @Id
-  @JsonFormat(pattern = "yyyy-MM-dd")
-  private LocalDateTime date;
 
   @ManyToOne
-  @MapsId
-  @JoinColumn(name = "symbol", referencedColumnName = "symbol")
+  @JoinColumn(name = "symbol", insertable = false, updatable = false)
   private StockSymbol stock;
 
 }

@@ -25,13 +25,6 @@ public class StockRealTimeDataServiceImpl implements StockRealTimeDataService{
   @Autowired
   private StockRepository stockRepository;
 
-  /*@Override
-  public RealTimeData callAnotherService(){
-    String url = "http://localhost:8081/allquotes";
-    ResponseEntity<RealTimeData> response = this.restTemplate.getForEntity(url, RealTimeData.class);
-    return response.getBody();
-  }*/
-
   // get all real time quotes
   @Override
   public List<RealTimeData> callAnotherService() {

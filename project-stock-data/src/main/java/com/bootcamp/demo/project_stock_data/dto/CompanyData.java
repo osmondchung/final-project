@@ -11,6 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 public class CompanyData {
+  private Long id;
   private String symbol;
   private String industry;
   private Double marketCap;
@@ -21,15 +22,3 @@ public class CompanyData {
   private String weburl;
 }
 
-// stockId
-/*             {
-        "symbol": "StockSymbol(symbol%3DMMM)",
-        "industry": null,
-        "marketCap": null,
-        "logo": null,
-        "companyName": null,
-        "shares": null,
-        "ipo": null,
-        "weburl": null,
-        "stock": null
-    },*/
