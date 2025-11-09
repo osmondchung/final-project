@@ -5,8 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HeatmapController {
-    @GetMapping("/")
-    public String index() {
-        return "index";
+    @GetMapping("/treemap")
+    public String treemap() {
+        return "treemap";
+    }
+
+    @GetMapping("/candlestick")
+    public String candlestick(){
+        return "candlestick";
     }
 }

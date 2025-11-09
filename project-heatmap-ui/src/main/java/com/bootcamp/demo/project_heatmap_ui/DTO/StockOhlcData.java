@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
-@JsonIgnoreProperties
-(value = {"symbol"})
+@JsonIgnoreProperties(value = {"symbol"})
 public class StockOhlcData {
     private String symbol;
     private LocalDate date;

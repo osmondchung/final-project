@@ -20,10 +20,10 @@ public class AppScheduler {
   @Autowired
   private StockOhlcDataService stockOhlcDataService;
 
-  @EventListener(ApplicationReadyEvent.class)
+  /*@EventListener(ApplicationReadyEvent.class)
   public void runOnStartup(){
     executeProfileFetch();
-  }
+  }*/
 
   @Scheduled(fixedDelay = 600000)
   public void scheduleProfileFetch(){

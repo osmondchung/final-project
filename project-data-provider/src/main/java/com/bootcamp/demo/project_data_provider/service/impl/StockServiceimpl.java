@@ -64,27 +64,6 @@ public class StockServiceimpl implements StockService{
   }
 
   @Override
-  public CompanyDataDto getProfile(String symbol){
-    String ComProfileURL = comProfileUrl + symbol + t + token;
-    CompanyDataDTO companyDataDTO = this.restTemplate.getForObject(ComProfileURL, CompanyDataDTO.class);
-
-    CompanyDataDto companyDataDto = CompanyDataDto.builder()
-      .symbol(companyDataDTO.getSymbol())
-      .industry(companyDataDTO.getIndustry())
-      .marketCap(companyDataDTO.getMarketCap())
-      .logo(companyDataDTO.getLogo())
-      .companyName(companyDataDTO.getCompanyName())
-      .shares(companyDataDTO.getShares())
-      .ipo(companyDataDTO.getIpo())
-      .weburl(companyDataDTO.getWeburl())
-      .build();
-    if (companyDataDto.getSymbol() == null){
-      companyDataDto.setSymbol(symbol);
-    }
-    return companyDataDto;
-  }
-
-  @Override
   public List<StockDto> getAllQuotes(){
     List<StockDto> stockDtoList = new ArrayList<>();
     for (String stockSymbol : stockSymbols){
@@ -106,6 +85,27 @@ public class StockServiceimpl implements StockService{
       stockDtoList.add(stockDto);
     }
     return stockDtoList;
+  }
+
+  @Override
+  public CompanyDataDto getProfile(String symbol){
+    String ComProfileURL = comProfileUrl + symbol + t + token;
+    CompanyDataDTO companyDataDTO = this.restTemplate.getForObject(ComProfileURL, CompanyDataDTO.class);
+
+    CompanyDataDto companyDataDto = CompanyDataDto.builder()
+      .symbol(companyDataDTO.getSymbol())
+      .industry(companyDataDTO.getIndustry())
+      .marketCap(companyDataDTO.getMarketCap())
+      .logo(companyDataDTO.getLogo())
+      .companyName(companyDataDTO.getCompanyName())
+      .shares(companyDataDTO.getShares())
+      .ipo(companyDataDTO.getIpo())
+      .weburl(companyDataDTO.getWeburl())
+      .build();
+    if (companyDataDto.getSymbol() == null){
+      companyDataDto.setSymbol(symbol);
+    }
+    return companyDataDto;
   }
 
   @Override

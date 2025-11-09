@@ -2,12 +2,16 @@ package com.bootcamp.demo.project_data_provider.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @Builder
+@ToString
+@EqualsAndHashCode
 public class StockDto {
     private String symbol;
     private Double price;

@@ -9,12 +9,12 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Configuration 
 public class AppConfig {
-  /*@Bean
+  @Bean
   RestTemplate restTemplate(){
     return new RestTemplate();
-  }*/
+  }
 
-  @Bean
+  /*@Bean
   public RestTemplate restTemplate() {
       RestTemplate rt = new RestTemplate();
       ObjectMapper mapper = new ObjectMapper();
@@ -23,5 +23,5 @@ public class AppConfig {
       converter.setObjectMapper(mapper);
       rt.getMessageConverters().add(converter);
       return rt;
-  }
+  }*/
 }

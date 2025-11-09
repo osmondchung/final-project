@@ -28,4 +28,6 @@ public class StockDataController {
     public StockOhlcvDto ohlc(@RequestParam String symbol) {
         return this.stockDataService.getOhlc(symbol);
     }
+
+
 }
