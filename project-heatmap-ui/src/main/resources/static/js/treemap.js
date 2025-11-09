@@ -1,15 +1,14 @@
 const API = '/api';
 let chart = null;
 
-// Debug: Log API responses
 async function apiCall(endpoint, params = '') {
     const url = `${API}${endpoint}${params}`;
-    console.log('Fetching:', url);  // DEBUG
+    console.log('Fetching:', url);
     try {
         const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        console.log('Response:', data);  // DEBUG
+        console.log('Response:', data);
         return data;
     } catch (error) {
         console.error('API Error:', error);
@@ -18,7 +17,7 @@ async function apiCall(endpoint, params = '') {
     }
 }
 
-// 1. Load Heatmap (Fixed: Use built-in d3.treemap)
+// 1. Load Heatmap 
 async function loadTreemap() {
     const data = await apiCall('/heatmap');
     if (!data || data.length === 0) {
@@ -34,11 +33,11 @@ async function loadTreemap() {
         }))
     };
 
-    drawTreemap(root, data);  // Pass data here
+    drawTreemap(root, data);
 }
 
-// 2. Draw Treemap (Fixed: Use d3.treemap() from D3 v7)
-function drawTreemap(root, data) {  // Receive data
+// 2. Draw Treemap 
+function drawTreemap(root, data) { 
     const width = 960, height = 600;
     d3.select("#heatmap").html("");
 
@@ -59,7 +58,6 @@ function drawTreemap(root, data) {  // Receive data
 
     treemap(hierarchy);
 
-    // Bind original stock data to each node (fixes scoping)
     hierarchy.each(d => {
         if (d.data.name) {
             const symbol = d.data.name.split('<br>')[0];
@@ -67,7 +65,6 @@ function drawTreemap(root, data) {  // Receive data
         }
     });
 
-    // Dynamic color scale based on actual data (avoids black)
     const pctValues = data.map(d => d.marketPriceChgPct).filter(v => v != null);
     const minPct = d3.min(pctValues) || -10;
     const maxPct = d3.max(pctValues) || 10;
@@ -83,7 +80,7 @@ function drawTreemap(root, data) {  // Receive data
     nodes.append("rect")
         .attr("width", d => d.x1 - d.x0)
         .attr("height", d => d.y1 - d.y0)
-        .attr("fill", d => colorScale(d.stock?.marketPriceChgPct || 0))  // Use d.stock
+        .attr("fill", d => colorScale(d.stock?.marketPriceChgPct || 0))
         .attr("stroke", "#fff")
         .attr("stroke-width", 1)
         .classed("node", true);
@@ -99,14 +96,13 @@ function drawTreemap(root, data) {  // Receive data
         .style("align-items", "center")
         .style("justify-content", "center")
         .style("font-size", d => Math.min(d.x1 - d.x0, d.y1 - d.y0) / 15 + "px")
-        .style("color", d => Math.abs(d.stock?.marketPriceChgPct || 0) > 3 ? "white" : "black")  // Contrast
+        .style("color", d => Math.abs(d.stock?.marketPriceChgPct || 0) > 3 ? "white" : "black")
         .style("text-align", "center")
         .style("padding", "2px")
         .style("overflow", "hidden")
         .style("word-break", "break-all")
-        .html(d => d.data.name);  // Supports <br> breaks
+        .html(d => d.data.name);
 
-    // Hover effect (unchanged)
     nodes.on("mouseover", function(event, d) {
         d3.select(this).select("rect").style("stroke-width", 3);
     }).on("mouseout", function() {

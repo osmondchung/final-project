@@ -50,17 +50,16 @@ h1, h2 {
     background: white;
     border: 1px solid #ddd;
     border-radius: 8px;
-    width: 100%;  /* Full width */
-    max-width: 1050px;  /* Optional cap */
-    margin: 0 auto;  /* Center */
+    width: 100%;  
+    max-width: 1050px; 
+    margin: 0 auto;  
 }
 
 #candlestick {
     width: 100% !important;
-    height: 750px !important;  /* Force height */
+    height: 750px !important;
 }
 
-/* Hover for treemap nodes */
 .node:hover rect { 
     stroke-width: 3 !important; 
     opacity: 0.8; 
