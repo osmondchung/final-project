@@ -17,13 +17,6 @@ import com.bootcamp.demo.project_stock_data.service.StockOhlcDataService;
 public class AppScheduler {
   @Autowired
   private StockForHeatmapService stockForHeatmapService;
-  @Autowired
-  private StockOhlcDataService stockOhlcDataService;
-
-  /*@EventListener(ApplicationReadyEvent.class)
-  public void runOnStartup(){
-    executeProfileFetch();
-  }*/
 
   @Scheduled(fixedDelay = 600000)
   public void scheduleProfileFetch(){

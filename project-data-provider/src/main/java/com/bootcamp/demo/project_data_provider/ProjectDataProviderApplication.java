@@ -7,8 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@ComponentScan(basePackages = "com.bootcamp.demo")
-@EnableScheduling
 public class ProjectDataProviderApplication {
 
 	public static void main(String[] args) {

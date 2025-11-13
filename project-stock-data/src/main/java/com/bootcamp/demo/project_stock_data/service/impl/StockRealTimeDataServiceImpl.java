@@ -45,7 +45,6 @@ public class StockRealTimeDataServiceImpl implements StockRealTimeDataService{
 
             RealTimeData body = response.getBody();
             realTimeDatas.add(body);
-            //return body;
 
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             throw new RuntimeException("Failed to fetch quotes: " + e.getMessage(), e);
@@ -80,20 +79,3 @@ public class StockRealTimeDataServiceImpl implements StockRealTimeDataService{
 
 
 }
-
-
-    /*String url = "http://localhost:8081/quote";
-    try {
-        ResponseEntity<List<RealTimeData>> response = restTemplate.exchange(
-            url,
-            HttpMethod.GET,
-            null,
-            new ParameterizedTypeReference<List<RealTimeData>>() {}
-        );
-
-        List<RealTimeData> body = response.getBody();
-        return body != null ? body : Collections.emptyList();
-
-    } catch (HttpClientErrorException | HttpServerErrorException e) {
-        throw new RuntimeException("Failed to fetch quotes: " + e.getMessage(), e);
-    }*/

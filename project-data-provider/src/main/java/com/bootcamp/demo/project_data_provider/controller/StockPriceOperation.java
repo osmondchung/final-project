@@ -13,9 +13,4 @@ public interface StockPriceOperation {
   @GetMapping(value = "/profile")
   CompanyDataDto getProfile(@RequestParam String symbol);
 
-  @GetMapping(value = "/allquotes")
-  List<StockDto> getAllQuotes();
-
-  @GetMapping(value = "/allprofiles")
-  List<CompanyDataDto> getAllProfiles();
 }

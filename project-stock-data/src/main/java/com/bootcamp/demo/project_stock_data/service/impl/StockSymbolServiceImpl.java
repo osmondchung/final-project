@@ -16,6 +16,4 @@ public class StockSymbolServiceImpl implements StockSymbolService{
   public List<String> getStocks(){
     return this.stockRepository.getStockSymbol();
   }
-
-
 }

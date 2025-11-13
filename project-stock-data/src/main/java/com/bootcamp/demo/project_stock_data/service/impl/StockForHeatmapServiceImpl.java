@@ -18,10 +18,6 @@ import com.bootcamp.demo.project_stock_data.service.StockRealTimeDataService;
 @Service
 public class StockForHeatmapServiceImpl implements StockForHeatmapService{
   @Autowired
-  private RestTemplate restTemplate;
-  @Autowired
-  private StockRepository stockRepository;
-  @Autowired
   private StockRealTimeDataService stockRealTimeDataService;
   @Autowired
   private StockCompanyDataService stockCompanyDataService;

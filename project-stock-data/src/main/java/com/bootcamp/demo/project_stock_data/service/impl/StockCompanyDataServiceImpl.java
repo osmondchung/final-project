@@ -28,32 +28,6 @@ public class StockCompanyDataServiceImpl implements StockCompanyDataService{
   @Autowired
   private StockProfilesRepository stockProfilesRepository;
 
-  /*@Override
-  public List<StockOhlcvDto> callAnotherService(){
-    String url = "http://localhost:8081/profile";
-    ResponseEntity<StockOhlcvDto> response = this.restTemplate.getForEntity(url, StockOhlcvDto.class);
-    return response.getBody();
-  }*/
-
-  /*@Override
-  public List<CompanyData> callAnotherService() {
-    String url = "http://localhost:8081/allprofiles";
-    try {
-        ResponseEntity<List<CompanyData>> response = restTemplate.exchange(
-            url,
-            HttpMethod.GET,
-            null,
-            new ParameterizedTypeReference<List<CompanyData>>() {}
-        );
-
-        List<CompanyData> body = response.getBody();
-        return body != null ? body : Collections.emptyList();
-
-    } catch (HttpClientErrorException | HttpServerErrorException e) {
-        throw new RuntimeException("Failed to fetch profiles: " + e.getMessage(), e);
-    }
-  }*/
-
     // get all real time quotes
   @Override
   @Transactional
@@ -75,28 +49,14 @@ public class StockCompanyDataServiceImpl implements StockCompanyDataService{
             );
 
             StockProfile body = response.getBody();
-            // CRITICAL: Set ID
             body.setSymbol(stockSymbol);
 
-            // Link StockSymbol
-            /*StockSymbol stock = stockRepository.findById(stockSymbol)
-                .orElseGet(() -> {
-                    StockSymbol s = new StockSymbol();
-                    s.setSymbol(stockSymbol);
-                    return stockRepository.save(s);
-                });
-            body.setStock(stock);*/
-
             stockProfiles.add(body);
-            //StockProfile body = response.getBody();
-            //stockProfiles.add(body);
-            //return body;
 
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             throw new RuntimeException("Failed to fetch quotes: " + e.getMessage(), e);
         }
     }
-    //this.stockProfilesRepository.saveAll(stockProfiles);
     saveToRepository(stockProfiles);
     return stockProfiles;
   }
